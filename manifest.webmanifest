@@ -1,0 +1,24 @@
+{
+  "name": "NicheIQ – Etsy Niche Intelligence",
+  "short_name": "NicheIQ",
+  "description": "Research demand, competition, trends and product opportunities with an offline-first niche dashboard.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b1a20",
+  "theme_color": "#102831",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
