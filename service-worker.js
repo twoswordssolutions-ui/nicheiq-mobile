@@ -1,6 +1,6 @@
 // NicheIQ GitHub Pages static app shell. Paths are relative to the repository site.
 const CACHE_PREFIX = 'nicheiq-github-pages-';
-const CACHE_NAME = CACHE_PREFIX + 'v1.0.1';
+const CACHE_NAME = CACHE_PREFIX + 'v2.0.0';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', event => {
@@ -21,6 +21,18 @@ self.addEventListener('fetch', event => {
   const request = event.request;
   const url = new URL(request.url);
   if (request.method !== 'GET' || url.origin !== self.location.origin) return;
+
+  // Network-first for public research JSON. Cache last successful report offline.
+  if (url.pathname.endsWith('/data/latest.json')) {
+    event.respondWith(fetch(request).then(response => {
+      if (response.ok) {
+        const copy = response.clone();
+        event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.put(request, copy)));
+      }
+      return response;
+    }).catch(() => caches.match(request)));
+    return;
+  }
 
   // Use network-first for page navigation, so a new deployment is visible online.
   if (request.mode === 'navigate') {

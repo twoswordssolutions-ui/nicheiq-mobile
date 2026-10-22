@@ -1,0 +1,32 @@
+name: "Register a research niche"
+description: "Automatically research this niche and refresh NicheIQ weekly. Only create niches that you own/manage."
+title: "[Niche] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Public registration:** This issue and the research report are visible in a public GitHub repository. Do not enter confidential information. Your niche is researched after an automation run succeeds.
+  - type: input
+    id: target_buyer
+    attributes:
+      label: Target buyer
+      description: Optional. Who is buying?
+      placeholder: "Western-wear enthusiasts and gift shoppers"
+  - type: input
+    id: region
+    attributes:
+      label: Region
+      placeholder: "United States"
+      value: "United States"
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Production constraints
+      description: Optional. Materials, equipment, budget, shipping restrictions, etc.
+      placeholder: "Hand tooling, vegetable-tanned leather; production under 60 minutes per item"
+  - type: input
+    id: maximum_budget
+    attributes:
+      label: Testing budget (USD)
+      description: Optional, numeric if known.
+      placeholder: "150"
